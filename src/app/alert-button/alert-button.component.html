@@ -5,8 +5,12 @@
     <div class="message-header">
       <p>Warning code {{severity}}</p>
     </div>
-    <div class="message-body">
-      {{ content }}
+    <div class="message-body-stub">
+      {{ observableContentStub | async }}
+    </div>
+
+    <div class="message-body-spy">
+      {{ observableContentSpy | async }}
     </div>
   </article>
 
