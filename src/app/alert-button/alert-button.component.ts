@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { timer } from 'rxjs';
+import { timer, Observable } from 'rxjs';
+import { MessageService } from '../message.service';
 
 @Component({
   selector: 'app-alert-button',
@@ -7,14 +8,15 @@ import { timer } from 'rxjs';
   styleUrls: ['./alert-button.component.scss']
 })
 export class AlertButtonComponent implements OnInit {
-
-  content = "this is the message";
+  textContent = "this is the message";
+  observableContent: Observable<string>;
   hideContent = true;
   severity = 123;
 
-  constructor() { }
+  constructor(private msgService: MessageService) { }
 
   ngOnInit(): void {
+    this.observableContent = this.msgService.getContent();
   }
 
   toggle() {
